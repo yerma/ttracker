@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Yermain Araya",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.2",
@@ -19,9 +19,14 @@
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
+    "babel-preset-latest": "^6.24.1",
+    "cross-env": "^5.0.1",
+    "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
     "nodemon": "^1.11.0",
     "vue-loader": "^12.2.2",
-    "webpack": "^3.3.0"
+    "vue-template-compiler": "^2.4.1",
+    "webpack": "^3.3.0",
+    "webpack-dev-server": "^2.5.1"
   }
 }
