@@ -1,5 +1,5 @@
-var path = require('path')
-var webpack = require('webpack')
+var path = require('path');
+var webpack = require('webpack');
 
 module.exports = {
   entry: './src/client/main.js',
@@ -13,6 +13,7 @@ module.exports = {
       {
         test: /\.vue$/,
         loader: 'vue-loader',
+        exclude: /node_modules/,
         options: {
           loaders: {
           }
