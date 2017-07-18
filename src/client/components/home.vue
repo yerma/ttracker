@@ -30,7 +30,7 @@ h3 {
   -moz-transform: translateY(-50%);
   transform: translateY(-50%);
   width: 50vw;
-  font-size: 90px;
+  font-size: 72px;
 }
 
 </style>

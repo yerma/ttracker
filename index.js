@@ -23,7 +23,7 @@ app.use(function(err, req, res, next){
   res.status(422).send({error: err.message});
 });
 
-var port = process.env.port || 4000;
+var port = process.env.port || 8080;
 app.listen(port, function(){
   console.log("now listening on port " + port);
 });
