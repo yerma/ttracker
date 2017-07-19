@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const routes = require('./src/server/routes/api');
 const bodyParser = require('body-parser');
@@ -11,11 +12,16 @@ mongoose.Promise = global.Promise;
 
 //static files
 app.use(express.static('public'));
+//app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 
 //initialize routes
 app.use('/api', routes);
+
+app.get('*', function(req, res) {
+    res.sendFile(path.join(__dirname,'./index.html'));
+});
 
 //error handling middleware
 app.use(function(err, req, res, next){

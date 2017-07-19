@@ -16,30 +16,30 @@
         <!-- match with 2 players -->
         <div class="col-xs-12">
           <div class="col-sm-5">
-              <h3 v-if="match.teamA.length > 0">{{ match.teamA[0].name}}</h3>
-              <h3 v-else>Player A</h3>
+              <h3 v-if="match.teamA.length == 0">Player A</h3>
+              <h3 v-else>{{ match.teamA.name}}</h3>
 
-              <select v-if="match.teamA.length == 0" v-model="match.teamA">
-                <option v-for="player in players">{{player.name}}</option>
+              <select v-if="match.teamA.length == 0" v-model="match.teamA" >
+                <option v-for="player in players" v-bind:value="player">{{player.name}}</option>
               </select>
 
-              <figure v-if="match.teamA.length > 0">
+              <figure v-if="match.teamA.length != 0">
                 <img src="http://via.placeholder.com/350x300" alt="">
               </figure>
 
           </div>
-          <div class="col-sm-2">
-              VS
+          <div class="col-sm-2 versus">
+              <span>VS</span>
           </div>
           <div class="col-sm-5">
-              <h3 v-if="match.teamB.length > 0">{{ match.teamB[0].name }}</h3>
-              <h3 v-else>Player B</h3>
+              <h3 v-if="match.teamB.length == 0">Player B</h3>
+              <h3 v-else>{{ match.teamB.name }}</h3>
 
               <select v-if="match.teamB.length == 0" v-model="match.teamB">
-                <option v-for="player in players">{{player.name}}</option>
+                <option v-for="player in players" v-bind:value="player">{{player.name}}</option>
               </select>
 
-              <figure v-if="match.teamB.length > 0">
+              <figure v-if="match.teamB.length != 0">
                 <img src="http://via.placeholder.com/350x300" alt="">
               </figure>
           </div>
@@ -115,15 +115,19 @@ export default {
 
     this.players = [
       {
+        id: 1,
         name: "Mario Jorquera"
       },
       {
+        id: 2,
         name: "Luis Mena"
       },
       {
+        id: 3,
         name: "Nelson Vergara"
       },
       {
+        id: 4,
         name: "Ricardo Herrera"
       }
     ]
@@ -152,5 +156,15 @@ li {
 
 a {
   color: #42b983;
+}
+
+.versus {
+  font-size: 3em;
+  position: relative;
+  height: 100%;
+}
+.versus span {
+  position: absolute;
+  top: 50%;
 }
 </style>

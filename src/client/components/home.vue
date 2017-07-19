@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 .home {
-  background: url('../assets/img/pingpong.jpg') center center no-repeat;
+  background: url('/public/img/pingpong.jpg') center center no-repeat;
   background-size: cover;
   padding: 70px 10px;
   height: 100vh;
