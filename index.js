@@ -11,8 +11,8 @@ mongoose.connect('mongodb://localhost/ttracker');
 mongoose.Promise = global.Promise;
 
 //static files
-app.use(express.static('public'));
-//app.use(express.static(path.join(__dirname, 'public')));
+//app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.use(bodyParser.json());
 
@@ -20,7 +20,7 @@ app.use(bodyParser.json());
 app.use('/api', routes);
 
 app.get('*', function(req, res) {
-    res.sendFile(path.join(__dirname,'./index.html'));
+    res.sendFile(path.join(__dirname,'./public/index.html'));
 });
 
 //error handling middleware

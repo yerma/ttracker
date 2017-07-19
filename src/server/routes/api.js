@@ -28,7 +28,4 @@ router.delete('/players/:id', function(req, res, next){
   }).catch(next);
 });
 
-//matches
-
-
 module.exports = router;
