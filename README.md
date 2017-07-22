@@ -10,7 +10,11 @@ After cloning the project run the following commands.
 ```
 npm install
 npm run build
+```
+
+To run the application, start MongoDB and then...
+```
 node index
 ```
 
-This last command will run the app on port 8080 if available.
+This last command will run the app on port 8080 if available. 
