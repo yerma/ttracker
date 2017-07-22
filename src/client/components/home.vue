@@ -5,6 +5,7 @@
 </template>
 
 <script>
+import pingpong from '../assets/img/pingpong.jpg';
 export default {
   data () {
     return {
@@ -16,7 +17,7 @@ export default {
 
 <style scoped>
 .home {
-  background: url('/public/img/pingpong.jpg') center center no-repeat;
+  background: url('/img/pingpong.jpg') center center no-repeat;
   background-size: cover;
   padding: 70px 10px;
   height: 100vh;

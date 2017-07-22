@@ -6,7 +6,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, './public'),
     publicPath: '/public/',
-    filename: 'build.js'
+    filename: 'scripts/build.js'
   },
   module: {
     rules: [
@@ -29,7 +29,7 @@ module.exports = {
         test: /\.(png|jpg|gif|svg)$/,
         loader: 'file-loader',
         options: {
-          name: '/img/[name].[ext]?[hash]'
+          name: 'img/[name].[ext]?[hash]'
         }
       }
     ]
