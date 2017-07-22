@@ -4,9 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "start": "cross-env NODE_ENV=production webpack --progress --hide-modules && node index",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Yermain Araya",
@@ -23,7 +20,7 @@
     "babel-core": "^6.25.0",
     "babel-loader": "^7.1.1",
     "babel-preset-env": "^1.6.0",
-    "cross-env": "^5.0.1",
+    "browser-sync": "^2.18.13",
     "css-loader": "^0.28.4",
     "file-loader": "^0.11.2",
     "gulp": "^3.9.1",
@@ -32,7 +29,6 @@
     "sass-loader": "^6.0.6",
     "vue-loader": "^12.2.2",
     "vue-template-compiler": "^2.4.1",
-    "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.5.1"
+    "webpack": "^3.3.0"
   }
 }

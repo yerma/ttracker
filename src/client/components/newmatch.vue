@@ -114,8 +114,9 @@ export default {
   margin: 40px 0;
 }
 
-.players-selection label {
+.players-selection .control-label {
   font-size: 1.3em;
+  margin-bottom: 16px;
 }
 
 .versus {
@@ -136,13 +137,14 @@ export default {
 }
 
 /* Players */
-
 .left figcaption{
+  top: 20px;
   left: 0;
   text-align: left;
 }
 
 .right figcaption{
+  bottom: 20px;
   right: 0;
   text-align: right;
 }

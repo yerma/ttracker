@@ -35,7 +35,6 @@ figure {
 figcaption {
     position: absolute;
     background: rgba(0,0,0,0.5);
-    bottom: 20px;
     padding: 10px 20px;
     font-size: 1.4em;
     font-weight: 600;
