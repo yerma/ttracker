@@ -1,5 +1,5 @@
 <template>
-  <div class="new-match">
+  <div class="new-match container">
     <h3>New Match</h3>
     <form class="form-horizontal">
       <div class="form-group">
@@ -10,94 +10,61 @@
         </div>
       </div>
 
-      <!-- 2 players -->
-      <div v-if="match.numPlayers == 2">
+        <!-- 2 players -->
+        <div v-if="match.numPlayers == 2" class="players-selection col-xs-12">
+            <div class="col-sm-5 left">
+              <!-- Player A selection -->
+              <div class="form-group" v-if="match.teamA.length == 0">
+                <label for="playerA" class="control-label">Player A</label>
+                <select id="playerA" class="form-control" v-model="match.teamA" required>
+                  <option v-for="player in players" v-bind:value="player"
+                      v-if="player.id != match.teamB.id">{{ player.name }}</option>
+                </select>
+              </div>
 
-        <!-- match with 2 players -->
-        <div class="col-xs-12">
-          <div class="col-sm-5">
-              <h3 v-if="match.teamA.length == 0">Player A</h3>
-              <h3 v-else>{{ match.teamA.name}}</h3>
+              <match-player v-bind:player="match.teamA" @update:player="match.teamA = []" v-else></match-player>
+            </div>
 
-              <select v-if="match.teamA.length == 0" v-model="match.teamA" >
-                <option v-for="player in players" v-bind:value="player">{{player.name}}</option>
-              </select>
+            <div class="col-sm-2 versus"><span>VS</span></div>
 
-              <figure v-if="match.teamA.length != 0">
-                <img src="http://via.placeholder.com/350x300" alt="">
-              </figure>
+            <div class="col-sm-5 right">
+              <!-- Player B selection -->
+              <div class="form-group" v-if="match.teamB.length == 0">
+                <label for="playerB" class="control-label">Player B</label>
+                <select id="playerB" class="form-control" v-model="match.teamB" required>
+                  <option v-for="player in players" v-bind:value="player"
+                      v-if="player.id != match.teamA.id">{{ player.name }}</option>
+                </select>
+              </div>
 
-          </div>
-          <div class="col-sm-2 versus">
-              <span>VS</span>
-          </div>
-          <div class="col-sm-5">
-              <h3 v-if="match.teamB.length == 0">Player B</h3>
-              <h3 v-else>{{ match.teamB.name }}</h3>
-
-              <select v-if="match.teamB.length == 0" v-model="match.teamB">
-                <option v-for="player in players" v-bind:value="player">{{player.name}}</option>
-              </select>
-
-              <figure v-if="match.teamB.length != 0">
-                <img src="http://via.placeholder.com/350x300" alt="">
-              </figure>
-          </div>
+                <match-player v-bind:player="match.teamB" @update:player="match.teamB = []" v-else></match-player>
+            </div>
         </div>
-      </div>
 
-      <!-- 4 players -->
-      <div v-else-if="match.numPlayers == 4">
+        <!-- 4 players -->
+        <div v-else-if="match.numPlayers == 4" class="players-selection col-xs-12">
+          <!-- match with 4 players -->
+            <div class="col-sm-5">
 
-        <!-- match with 4 players -->
-        <div class="col-xs-12">
-          <div class="col-sm-5">
-              <h3>Team A</h3>
+            </div>
+            <div class="col-sm-2">
+VS
+            </div>
+            <div class="col-sm-5">
 
-              <select v-if="match.teamA.length == 0" class="" name="">
-                <option v-for="player in players" value="">{{player}}</option>
-              </select>
-              <select v-if="match.teamA.length == 0" class="" name="">
-                <option v-for="player in players" value="">{{player}}</option>
-              </select>
-
-              <figure v-if="match.teamA.length > 0">
-                <img src="http://via.placeholder.com/350x150" alt="">
-                <figcaption>
-                  <h4 >{{ match.teamA[0].name }}</h4>
-                </figcaption>
-              </figure>
-
-          </div>
-          <div class="col-sm-2">
-              VS
-          </div>
-          <div class="col-sm-5">
-              <h3>Team B</h3>
-
-              <select v-if="match.teamA.length == 0" class="" name="">
-                <option v-for="player in players" value="">{{player}}</option>
-              </select>
-              <select v-if="match.teamA.length == 0" class="" name="">
-                <option v-for="player in players" value="">{{player}}</option>
-              </select>
-
-              <figure v-if="match.teamB.length > 0">
-                <img src="http://via.placeholder.com/350x150" alt="">
-                <figcaption>
-                  <h4 >{{ match.teamB[0].name }}</h4>
-                </figcaption>
-              </figure>
-          </div>
+            </div>
         </div>
-      </div>
-
     </form>
   </div>
 </template>
 
 <script>
+
+import matchPlayer from './matchplayer.vue';
 export default {
+  components: {
+    'match-player': matchPlayer
+  },
   data () {
     return {
       players: [],
@@ -136,35 +103,48 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
+<style>
 .new-match {
   padding: 80px 10px;
-}
-h1, h2 {
-  font-weight: normal;
+  height: 100vh;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
+.players-selection {
+  height: 60vh;
+  margin: 40px 0;
 }
 
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
+.players-selection label {
+  font-size: 1.3em;
 }
 
 .versus {
   font-size: 3em;
   position: relative;
   height: 100%;
+  padding: 0;
 }
 .versus span {
   position: absolute;
-  top: 50%;
+  display: block;
+  top: 40%;
+  -webkit-transform: translateY(-50%);
+  -moz-transform: translateY(-50%);
+  transform: translateY(-50%);
+  width: 100%;
+  text-align: center;
 }
+
+/* Players */
+
+.left figcaption{
+  left: 0;
+  text-align: left;
+}
+
+.right figcaption{
+  right: 0;
+  text-align: right;
+}
+
 </style>
